@@ -30,8 +30,7 @@ metrics, ranking, external comparison, and graphs:
 ./.venv/bin/python reproduce_all_reported.py --retrain-selected
 ```
 
-This is the strongest end-to-end reproducibility check. On the reference CPU
-environment it completes in under one minute, although runtime is
+The CPU used in the study completes reproduction in under one minute, although runtime is
 machine-dependent.
 
 ## Individual commands
@@ -88,10 +87,8 @@ The original model checkpoint is therefore not required merely to redraw the
 reported PCA.
 
 Static biology illustrations and concept diagrams in the dissertation PDF are
-not reproduced by the code package. The figure reproduction command only
-regenerates graph artifacts from the packaged data and checks that the staged
-images are readable. The dissertation LaTeX source is intentionally not
-included or modified by this code submission.
+not reproduced by the code package, but the figure reproduction command
+regenerates graph artifacts from the packaged data and checks that the staged images are readable.
 
 ## Exploratory fine-tuned artifacts
 

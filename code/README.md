@@ -1,8 +1,7 @@
 # Dissertation Code Submission
 
 This folder is a self-contained copy of the code and compact artifacts needed
-to inspect and reproduce the selected dissertation experiment. It does not use
-or modify files outside this folder.
+to inspect and reproduce the study.
 
 ## Included
 

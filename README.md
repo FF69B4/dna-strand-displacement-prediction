@@ -1,12 +1,14 @@
-# Dissertation Submission Package
+# Dissertation Project
 
 This package contains the submitted dissertation PDF and the code/artifacts
 needed to reproduce the reported computational results.
 
 ## Contents
 
-- `dissertation.pdf` - latest compiled dissertation PDF.
-- `code/` - self-contained reproducibility code package.
+- `report/dissertation.pdf` - report
+- `report/README.md` - report (in markdown)
+- `report/report-img/` - report (converted to images)
+- `code/` - project code and datasets.
 
 ## Reproducing Results
 
