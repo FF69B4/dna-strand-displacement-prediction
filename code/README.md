@@ -1,4 +1,4 @@
-# Dissertation Code Submission
+# Dissertation Code
 
 This folder is a self-contained copy of the code and compact artifacts needed
 to inspect and reproduce the study.
@@ -26,23 +26,14 @@ they are not needed to reproduce the selected frozen-embedding regression run.
 
 ## Setup
 
-From this `submission` directory:
+From this `code` directory:
 
 ```bash
 python3 -m venv .venv
 ./.venv/bin/python -m pip install -r requirements.txt
 ```
 
-## 1. Verify the Package
-
-```bash
-./.venv/bin/python verify_submission.py
-```
-
-This checks required files, imports the framework, loads the selected model,
-and reports its architecture and metadata.
-
-## 2. Quick Prediction Check
+## 1. Quick Prediction Check
 
 ```bash
 ./.venv/bin/python reproduce_predictions.py
@@ -52,7 +43,7 @@ This reloads the selected saved artifact, rebuilds Table 3 features, recomputes
 the candidate ranking, and compares it with the canonical ranked CSV. Output is
 written under `outputs/`.
 
-## 3. Full Selected-Experiment Reproduction
+## 2. Full Selected-Experiment Reproduction
 
 ```bash
 ./.venv/bin/python reproduce_experiment.py
@@ -71,7 +62,7 @@ To additionally regenerate paper graphs:
 The full report and regenerated files are written under `outputs/`. Existing
 output directories are not overwritten.
 
-## 4. Reproduce Every Reported Result and Figure
+## 3. Reproduce Every Reported Result and Graph
 
 ```bash
 ./.venv/bin/python reproduce_all_reported.py

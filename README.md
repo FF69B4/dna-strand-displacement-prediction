@@ -1,14 +1,12 @@
-# Dissertation Project
+# DNA Strand Displacement Prediction
 
-This package contains the submitted dissertation PDF and the code/artifacts
-needed to reproduce the reported computational results.
+This repository contains the dissertation report, project code, datasets, and
+compact artifacts needed to reproduce the reported computational results.
 
 ## Contents
 
-- `report/dissertation.pdf` - report
-- `report/README.md` - report (in markdown)
-- `report/report-img/` - report (converted to images)
-- `code/` - project code and datasets.
+- `report/dissertation.pdf` - dissertation report.
+- `code/` - project code, cleaned datasets, embeddings, model artifacts, and reproducibility scripts.
 
 ## Reproducing Results
 
@@ -17,7 +15,6 @@ Run commands from the `code/` directory.
 ```bash
 python3 -m venv .venv
 ./.venv/bin/python -m pip install -r requirements.txt
-./.venv/bin/python verify_submission.py
 ./.venv/bin/python reproduce_all_reported.py
 ```
 
