@@ -1,29 +1,58 @@
 # DNA Strand Displacement Prediction
 
-This repository contains the dissertation report, project code, datasets, and
-compact artifacts needed to reproduce the reported computational results.
+Machine learning approach for predicting toehold-mediated DNA strand displacement kinetics using sequence-based and thermodynamic features.
 
-## Contents
+University of Newcastle CSC3094 Dissertation Project.
 
-- `report/dissertation.pdf` - dissertation report.
-- `code/` - project code, cleaned datasets, embeddings, model artifacts, and reproducibility scripts.
+[📄 View dissertation](./report/dissertation.pdf) [💻 View source](./code)
 
-## Reproducing Results
+---
 
-Run commands from the `code/` directory.
+## Overview
 
-```bash
-python3 -m venv .venv
-./.venv/bin/python -m pip install -r requirements.txt
-./.venv/bin/python reproduce_all_reported.py
-```
+This project explores the prediction of DNA strand displacement reaction rates using machine learning and computational biology approaches.
 
-For the strongest audit, including retraining the selected model:
+The pipeline combines:
 
-```bash
-./.venv/bin/python reproduce_all_reported.py --retrain-selected
-```
+- DNA language model embeddings
+- Thermodynamic nearest-neighbour features
+- Sequence availability features
+- Regression-based prediction models
 
-See `code/README.md`, `code/REPRODUCIBILITY.md`, and
-`code/config/reproducibility_manifest.json` for the full result-to-command and
-figure-to-command mapping.
+The aim is to improve prediction of molecular reaction behaviour and support the design of DNA-based computing systems.
+
+---
+
+## Methodology
+
+The project investigates the combination of biological sequence representations and traditional thermodynamic modelling.
+
+Key components include:
+
+- DNA-BERT sequence embeddings
+- Nearest-neighbour thermodynamic analysis
+- Feature engineering from molecular properties
+- Machine learning model evaluation
+- Reproducible experimental workflows
+
+---
+
+## Results
+
+The final model combines transformer-based sequence embeddings with thermodynamic and availability features.
+
+Performance:
+
+- R²: 0.702
+- External ranking Spearman correlation: 0.745
+- 64.5% of predictions within 2× of measured rates
+
+The results demonstrate that combining learned sequence representations with domain-specific biological features improves prediction of DNA strand displacement kinetics.
+
+---
+
+## Report
+
+The full dissertation is available here:
+
+[📄 Read dissertation](./report)
