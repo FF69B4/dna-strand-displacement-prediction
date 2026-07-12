@@ -1,0 +1,48 @@
+{
+  "name": "Selected dissertation frozen-embedding regression experiment",
+  "training_data": "data/extracted/clean/table_1.csv",
+  "prediction_data": "data/extracted/clean/table_3.csv",
+  "training_embeddings": "bert/table_1_embeddings.npz",
+  "prediction_embeddings": "bert/table_3_embeddings.npz",
+  "canonical_artifact": "training/artifacts/frozen_regression/k1_regression_head_with_availability_tuned1.pt",
+  "canonical_summary": "training/artifacts/frozen_regression/k1_regression_head_with_availability_tuned1.json",
+  "canonical_ranked_predictions": "training/artifacts/final_predictions/table_3_final_predictions_ranked.csv",
+  "target": {
+    "column": "k1",
+    "transform": "log10"
+  },
+  "schema": {
+    "id_column": "No.",
+    "sequence_column": "Sequence",
+    "availability_column": "Nucleotide Availability"
+  },
+  "features": {
+    "feature_set": "embeddings+nn+availability",
+    "nearest_neighbour_mode": "both",
+    "embedding_model": "zhihan1996/DNA_bert_6",
+    "embedding_pooling": "mean",
+    "embedding_kmer_size": 6
+  },
+  "regression_head": {
+    "hidden_dimensions": [
+      768,
+      256
+    ],
+    "activation": "gelu",
+    "normalization": "layer",
+    "dropout": 0.1
+  },
+  "training": {
+    "batch_size": 128,
+    "maximum_epochs": 250,
+    "learning_rate": 0.0005,
+    "weight_decay": 0.0003,
+    "early_stopping_patience": 30,
+    "minimum_improvement": 0.0001,
+    "validation_fraction": 0.15,
+    "test_fraction": 0.15,
+    "random_seed": 7,
+    "device": "cpu"
+  }
+}
+

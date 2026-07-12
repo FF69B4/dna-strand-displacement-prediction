@@ -1,0 +1,64 @@
+{
+  "artifact_path": "training/artifacts/frozen_regression/k1_regression_head_with_availability.pt",
+  "predictions_path": "training/artifacts/frozen_regression/k1_regression_head_with_availability_predictions.csv",
+  "target_column": "k1",
+  "target_transform": "log10",
+  "feature_count": 1278,
+  "row_count": 4450,
+  "embedding_metadata": {
+    "model_name": "zhihan1996/DNA_bert_6",
+    "pooling": "mean",
+    "kmer_size": 6,
+    "model_kmer_size": 6,
+    "embedding_path": "bert/table_1_embeddings.npz"
+  },
+  "training_config": {
+    "batch_size": 256,
+    "epochs_requested": 250,
+    "epochs_trained": 66,
+    "best_epoch": 36,
+    "learning_rate": 0.001,
+    "weight_decay": 0.0001,
+    "patience": 30,
+    "seed": 7,
+    "device": "cpu"
+  },
+  "metrics": {
+    "train": {
+      "raw": {
+        "mae": 265746.15625,
+        "rmse": 541920.625,
+        "r2": 0.7654185710589116
+      },
+      "model_scale": {
+        "mae": 0.11717411130666733,
+        "rmse": 0.150013729929924,
+        "r2": 0.9492032040841482
+      }
+    },
+    "val": {
+      "raw": {
+        "mae": 416864.78125,
+        "rmse": 659108.25,
+        "r2": 0.6246921828660085
+      },
+      "model_scale": {
+        "mae": 0.247208833694458,
+        "rmse": 0.335064172744751,
+        "r2": 0.7338047303922525
+      }
+    },
+    "test": {
+      "raw": {
+        "mae": 406633.5,
+        "rmse": 635703.0,
+        "r2": 0.6263803668445576
+      },
+      "model_scale": {
+        "mae": 0.24679428339004517,
+        "rmse": 0.34168726205825806,
+        "r2": 0.7282361414187819
+      }
+    }
+  }
+}

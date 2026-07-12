@@ -1,0 +1,40 @@
+{
+  "rows": [
+    {
+      "Model": "Embeddings only",
+      "R2": 0.240,
+      "RMSE": 906381.063,
+      "MAE": 601778.375
+    },
+    {
+      "Model": "Embeddings + NN features",
+      "R2": 0.335,
+      "RMSE": 848327.750,
+      "MAE": 588749.063
+    },
+    {
+      "Model": "Embeddings + NN + availability",
+      "R2": 0.626,
+      "RMSE": 635703.000,
+      "MAE": 406633.500
+    },
+    {
+      "Model": "Selected hybrid model",
+      "R2": 0.702,
+      "RMSE": 567590.625,
+      "MAE": 369376.906
+    },
+    {
+      "Model": "Unoptimised DNABERT-2",
+      "R2": 0.647,
+      "RMSE": 617602.875,
+      "MAE": 395669.844
+    },
+    {
+      "Model": "Optimised DNABERT-2",
+      "R2": 0.687,
+      "RMSE": 581798.125,
+      "MAE": 381525.688
+    }
+  ]
+}

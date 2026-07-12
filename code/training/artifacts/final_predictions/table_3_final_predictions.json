@@ -1,0 +1,72 @@
+{
+  "table_path": "data/extracted/clean/table_3.csv",
+  "embedding_path": "bert/table_3_embeddings.npz",
+  "artifact_path": "training/artifacts/frozen_regression/k1_regression_head_with_availability_tuned1.pt",
+  "output_csv": "training/artifacts/final_predictions/table_3_final_predictions.csv",
+  "ranked_csv": "training/artifacts/final_predictions/table_3_final_predictions_ranked.csv",
+  "row_count": 1000,
+  "predicted_k1_min": 9811,
+  "predicted_k1_max": 4413072,
+  "top_10_ranked": [
+    {
+      "No.": 837,
+      "Sequence": "GACCCCACCTTTATTTTGATCTCCATAACC",
+      "predicted_k1": 4413072,
+      "predicted_rank": 1
+    },
+    {
+      "No.": 836,
+      "Sequence": "CGACCCCACCTTTATTTTGATCTCCATAAC",
+      "predicted_k1": 4381440,
+      "predicted_rank": 2
+    },
+    {
+      "No.": 55,
+      "Sequence": "GGCCGGTTCCTCTTACTTGGCAGAGGGAGG",
+      "predicted_k1": 4348868,
+      "predicted_rank": 3
+    },
+    {
+      "No.": 94,
+      "Sequence": "TCCGCCTGCATTTCTTTTTCTGGATTACTT",
+      "predicted_k1": 4027166,
+      "predicted_rank": 4
+    },
+    {
+      "No.": 831,
+      "Sequence": "ATTCCCGACCCCACCTTTATTTTGATCTCC",
+      "predicted_k1": 4016599,
+      "predicted_rank": 5
+    },
+    {
+      "No.": 92,
+      "Sequence": "TCTCCGCCTGCATTTCTTTTTCTGGATTAC",
+      "predicted_k1": 3928837,
+      "predicted_rank": 6
+    },
+    {
+      "No.": 840,
+      "Sequence": "CCCACCTTTATTTTGATCTCCATAACCATT",
+      "predicted_k1": 3925784,
+      "predicted_rank": 7
+    },
+    {
+      "No.": 838,
+      "Sequence": "ACCCCACCTTTATTTTGATCTCCATAACCA",
+      "predicted_k1": 3832656,
+      "predicted_rank": 8
+    },
+    {
+      "No.": 93,
+      "Sequence": "CTCCGCCTGCATTTCTTTTTCTGGATTACT",
+      "predicted_k1": 3827299,
+      "predicted_rank": 9
+    },
+    {
+      "No.": 254,
+      "Sequence": "GGAGGGAAAGAAGTGTGCAGAAGGCAAGCC",
+      "predicted_k1": 3703148,
+      "predicted_rank": 10
+    }
+  ]
+}

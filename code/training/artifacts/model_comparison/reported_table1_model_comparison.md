@@ -1,0 +1,8 @@
+| Model | R2 | RMSE | MAE |
+|---|---:|---:|---:|
+| Embeddings only | 0.240 | 906381.063 | 601778.375 |
+| Embeddings + NN features | 0.335 | 848327.750 | 588749.063 |
+| Embeddings + NN + availability | 0.626 | 635703.000 | 406633.500 |
+| Selected hybrid model | 0.702 | 567590.625 | 369376.906 |
+| Unoptimised DNABERT-2 | 0.647 | 617602.875 | 395669.844 |
+| Optimised DNABERT-2 | 0.687 | 581798.125 | 381525.688 |

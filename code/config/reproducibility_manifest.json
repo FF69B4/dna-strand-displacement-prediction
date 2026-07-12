@@ -1,0 +1,45 @@
+{
+  "reported_results": {
+    "comparison_table": {
+      "canonical": "training/artifacts/model_comparison/reported_table1_model_comparison.csv",
+      "command": "./.venv/bin/python verify_reported_results.py",
+      "method": "Reconstruct the reported Table 1 raw-scale metrics from packaged model summaries"
+    },
+    "selected_6mer_test_r2": {
+      "reported": 0.702,
+      "source": "training/artifacts/frozen_regression/k1_regression_head_with_availability_tuned1_predictions.csv",
+      "command": "./.venv/bin/python verify_reported_results.py"
+    },
+    "optimized_dnabert2_test_r2": {
+      "reported": 0.687,
+      "source": "training/artifacts/frozen_regression/dnabert2_optimized_final_summary.json",
+      "command": "./.venv/bin/python verify_reported_results.py"
+    },
+    "selected_model_exact_retraining": {
+      "command": "./.venv/bin/python reproduce_experiment.py --render-graphs",
+      "checks": [
+        "metrics",
+        "model tensors",
+        "Table 3 ranking",
+        "external metrics",
+        "graph file set"
+      ]
+    }
+  },
+  "paper_figures": {
+    "generated": {
+      "dimensions.png": "feature_concatenation_dimensions.png",
+      "table1_table3_embedding_pca_3d.png": "table1_table3_embedding_pca_3d.png",
+      "r2_ablation.png": "embeddings_only_ablation_context.png",
+      "predicted_vs_actual.png": "predicted_vs_actual_log10_test.png",
+      "residuals_vs_predicted_log10_test.png": "residuals_vs_predicted_log10_test.png",
+      "external_ranking_metrics.png": "external_ranking_metrics.png",
+      "mean_availability_predicted_k.png": "mean_availability_vs_predicted_k1.png",
+      "top_k_overlap.png": "topk_overlap_curve_final_model.png",
+      "akay model agreement.png": "akay_model_rank_agreement.png",
+      "strand_vector_better.png": "embedding_context_experiment/same_6mer_token_context_pca_3d.png"
+    },
+    "command": "./.venv/bin/python reproduce_reported_figures.py",
+    "scope": "actual computational graph artifacts only; static illustrations and concept diagrams are embedded in the PDF and not reproduced by this code package"
+  }
+}

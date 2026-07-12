@@ -1,0 +1,100 @@
+{
+  "artifact_path": "training/artifacts/finetuned_dnabert/k1_finetuned_dnabert_with_availability_staged1.pt",
+  "predictions_path": "training/artifacts/finetuned_dnabert/k1_finetuned_dnabert_with_availability_staged1_predictions.csv",
+  "target_column": "k1",
+  "target_transform": "log10",
+  "row_count": 4450,
+  "metrics": {
+    "train": {
+      "raw": {
+        "mae": 375718.5625,
+        "rmse": 672143.25,
+        "r2": 0.6391340745848346
+      },
+      "model_scale": {
+        "mae": 0.2032739669084549,
+        "rmse": 0.275752991437912,
+        "r2": 0.8283614643818745
+      }
+    },
+    "val": {
+      "raw": {
+        "mae": 520898.59375,
+        "rmse": 766070.75,
+        "r2": 0.4929954433560493
+      },
+      "model_scale": {
+        "mae": 0.34689125418663025,
+        "rmse": 0.4700660705566406,
+        "r2": 0.4760834073174758
+      }
+    },
+    "test": {
+      "raw": {
+        "mae": 521637.90625,
+        "rmse": 759582.875,
+        "r2": 0.4665773682531833
+      },
+      "model_scale": {
+        "mae": 0.3577135503292084,
+        "rmse": 0.49829810857772827,
+        "r2": 0.4220202774268469
+      }
+    }
+  },
+  "model_name": "zhihan1996/DNA_bert_6",
+  "feature_set": "bert+nn+availability",
+  "tuning_config": {
+    "total_encoder_layers": 12,
+    "train_embeddings": false,
+    "unfreeze_last_n_layers": 1,
+    "trainable_encoder_parameter_count": 7087872
+  },
+  "training_config": {
+    "batch_size": 32,
+    "epochs_requested": 8,
+    "epochs_trained": 8,
+    "best_epoch": 8,
+    "encoder_learning_rate": 3e-06,
+    "head_learning_rate": 0.0007,
+    "weight_decay": 0.0001,
+    "gradient_clip": 1.0,
+    "scheduler": "cosine",
+    "warmup_ratio": 0.05,
+    "warmup_steps": 39,
+    "loss": "mse",
+    "huber_delta": null,
+    "patience": 4,
+    "head_only_warmup_epochs": 2,
+    "seed": 7,
+    "device": "cpu"
+  },
+  "phase_summaries": [
+    {
+      "name": "head_warmup",
+      "epochs_requested": 2,
+      "epochs_trained": 2,
+      "warmup_steps": 10,
+      "tuning_config": {
+        "total_encoder_layers": 12,
+        "train_embeddings": false,
+        "unfreeze_last_n_layers": 0,
+        "trainable_encoder_parameter_count": 0
+      },
+      "best_epoch": 2
+    },
+    {
+      "name": "finetune",
+      "epochs_requested": 6,
+      "epochs_trained": 6,
+      "warmup_steps": 29,
+      "tuning_config": {
+        "total_encoder_layers": 12,
+        "train_embeddings": false,
+        "unfreeze_last_n_layers": 1,
+        "trainable_encoder_parameter_count": 7087872
+      },
+      "best_epoch": 8
+    }
+  ]
+}

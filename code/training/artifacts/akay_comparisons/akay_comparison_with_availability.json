@@ -1,0 +1,61 @@
+{
+  "akay_path": "data/extracted/clean/table_4.csv",
+  "embedding_path": "bert/table_3_embeddings.npz",
+  "availability_path": "data/extracted/clean/table_3.csv",
+  "frozen_artifact": "training/artifacts/frozen_regression/k1_regression_head_with_availability.pt",
+  "finetune_artifacts": [
+    "training/artifacts/finetuned_dnabert/k1_finetuned_dnabert_with_availability.pt"
+  ],
+  "row_count": 1000,
+  "metrics": {
+    "k1_regression_head_with_availability": {
+      "pearson_raw": 0.7012687833821019,
+      "spearman_raw": 0.7371258193371969,
+      "pearson_log10": 0.7481981347100413,
+      "spearman_log10": 0.7371258193371969,
+      "rmse_log10_vs_akay": 0.36901265382766724,
+      "mae_log10_vs_akay": 0.28719866275787354,
+      "rmse_vs_akay": 794752.6875,
+      "mae_vs_akay": 529691.6875,
+      "mean_signed_percent_error_vs_akay": 7.601017475128174,
+      "mape_vs_akay_percent": 64.73936462402344,
+      "median_ape_vs_akay_percent": 46.739593505859375,
+      "smape_vs_akay_percent": 59.497196197509766,
+      "mean_fold_error_vs_akay": 2.324519157409668,
+      "median_fold_error_vs_akay": 1.7010279893875122,
+      "within_2x_vs_akay": 0.597,
+      "within_3x_vs_akay": 0.826,
+      "within_10x_vs_akay": 0.987,
+      "top_10_overlap": 0.3,
+      "top_50_overlap": 0.46,
+      "top_100_overlap": 0.48
+    },
+    "k1_finetuned_dnabert_with_availability": {
+      "pearson_raw": 0.6498970390590395,
+      "spearman_raw": 0.6169555628064296,
+      "pearson_log10": 0.5894416073335602,
+      "spearman_log10": 0.6169555628064296,
+      "rmse_log10_vs_akay": 0.4572504162788391,
+      "mae_log10_vs_akay": 0.34999343752861023,
+      "rmse_vs_akay": 871835.5625,
+      "mae_vs_akay": 599207.0,
+      "mean_signed_percent_error_vs_akay": 18.153364181518555,
+      "mape_vs_akay_percent": 83.09719848632812,
+      "median_ape_vs_akay_percent": 52.76310348510742,
+      "smape_vs_akay_percent": 69.08441162109375,
+      "mean_fold_error_vs_akay": 3.088076591491699,
+      "median_fold_error_vs_akay": 1.8732514381408691,
+      "within_2x_vs_akay": 0.537,
+      "within_3x_vs_akay": 0.731,
+      "within_10x_vs_akay": 0.963,
+      "top_10_overlap": 0.3,
+      "top_50_overlap": 0.38,
+      "top_100_overlap": 0.44
+    }
+  },
+  "outputs": {
+    "csv": "training/artifacts/akay_comparisons/akay_comparison_with_availability.csv",
+    "json": "training/artifacts/akay_comparisons/akay_comparison_with_availability.json"
+  },
+  "notes": "Percentage-error fields are computed locally as signed percent error, MAPE, median absolute percentage error, and sMAPE. Log-scale agreement is summarized separately with log10 error, fold error, and within-kx rates relative to Akay's Predicted k1 values because no explicit Akay-specific percent-error formula was found in the local project files."
+}

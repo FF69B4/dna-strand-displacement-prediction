@@ -1,0 +1,125 @@
+{
+  "measured_k1": {
+    "baseline_with_availability": {
+      "artifact_path": "training/artifacts/frozen_regression/k1_regression_head_with_availability.pt",
+      "test_r2": 0.6263803668445576,
+      "test_rmse": 635703.0,
+      "test_mae": 406633.5,
+      "val_r2": 0.6246921828660085,
+      "best_epoch": 36,
+      "training_config": {
+        "batch_size": 256,
+        "epochs_requested": 250,
+        "epochs_trained": 66,
+        "best_epoch": 36,
+        "learning_rate": 0.001,
+        "weight_decay": 0.0001,
+        "patience": 30,
+        "seed": 7,
+        "device": "cpu"
+      }
+    },
+    "embeddings_availability_only": {
+      "artifact_path": "training/artifacts/frozen_regression/k1_regression_head_embeddings_availability.pt",
+      "test_r2": 0.5841932984486541,
+      "test_rmse": 670633.375,
+      "test_mae": 428401.15625,
+      "val_r2": 0.6377189458261806,
+      "best_epoch": 140,
+      "training_config": {
+        "batch_size": 256,
+        "epochs_requested": 250,
+        "epochs_trained": 170,
+        "best_epoch": 140,
+        "learning_rate": 0.001,
+        "weight_decay": 0.0001,
+        "patience": 30,
+        "seed": 7,
+        "device": "cpu"
+      }
+    },
+    "availability_freqnn": {
+      "artifact_path": "training/artifacts/frozen_regression/k1_regression_head_with_availability_freqnn.pt",
+      "test_r2": 0.5641807075674019,
+      "test_rmse": 686582.375,
+      "test_mae": 448556.34375,
+      "val_r2": 0.6058195306537826,
+      "best_epoch": 62,
+      "training_config": {
+        "batch_size": 256,
+        "epochs_requested": 250,
+        "epochs_trained": 92,
+        "best_epoch": 62,
+        "learning_rate": 0.001,
+        "weight_decay": 0.0001,
+        "patience": 30,
+        "seed": 7,
+        "device": "cpu"
+      }
+    },
+    "tuned1": {
+      "artifact_path": "training/artifacts/frozen_regression/k1_regression_head_with_availability_tuned1.pt",
+      "test_r2": 0.7021541403992859,
+      "test_rmse": 567590.625,
+      "test_mae": 369376.90625,
+      "val_r2": 0.7194255231600253,
+      "best_epoch": 60,
+      "training_config": {
+        "batch_size": 128,
+        "epochs_requested": 250,
+        "epochs_trained": 90,
+        "best_epoch": 60,
+        "learning_rate": 0.0005,
+        "weight_decay": 0.0003,
+        "patience": 30,
+        "seed": 7,
+        "device": "cpu"
+      }
+    },
+    "tuned2": {
+      "artifact_path": "training/artifacts/frozen_regression/k1_regression_head_with_availability_tuned2.pt",
+      "test_r2": 0.68970606292357,
+      "test_rmse": 579330.0625,
+      "test_mae": 375398.65625,
+      "val_r2": 0.6995466529397127,
+      "best_epoch": 50,
+      "training_config": {
+        "batch_size": 128,
+        "epochs_requested": 250,
+        "epochs_trained": 80,
+        "best_epoch": 50,
+        "learning_rate": 0.0005,
+        "weight_decay": 0.0003,
+        "patience": 30,
+        "seed": 7,
+        "device": "cpu"
+      }
+    }
+  },
+  "akay": {
+    "baseline_with_availability": {
+      "source_metrics_key": "k1_regression_head_with_availability",
+      "pearson_log10": 0.7481981347100413,
+      "spearman_log10": 0.7371258193371969,
+      "rmse_log10_vs_akay": 0.36901265382766724,
+      "median_fold_error_vs_akay": 1.7010279893875122,
+      "within_2x_vs_akay": 0.597,
+      "top_50_overlap": 0.46,
+      "top_100_overlap": 0.48
+    },
+    "tuned1": {
+      "source_metrics_key": "k1_regression_head_with_availability_tuned1",
+      "pearson_log10": 0.7572209475437081,
+      "spearman_log10": 0.745248837484584,
+      "rmse_log10_vs_akay": 0.3314603269100189,
+      "median_fold_error_vs_akay": 1.5924673080444336,
+      "within_2x_vs_akay": 0.645,
+      "top_50_overlap": 0.52,
+      "top_100_overlap": 0.53
+    }
+  },
+  "notes": [
+    "Best measured-k1 run in this sweep: tuned1.",
+    "Embeddings+availability and frequency-only NN both underperformed the baseline."
+  ]
+}

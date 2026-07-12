@@ -1,0 +1,92 @@
+{
+  "artifact_path": "training/artifacts/frozen_regression/k1_regression_head_with_availability_domain_weighted_soft.pt",
+  "predictions_path": "training/artifacts/frozen_regression/k1_regression_head_with_availability_domain_weighted_soft_predictions.csv",
+  "target_column": "k1",
+  "target_transform": "log10",
+  "feature_count": 1278,
+  "row_count": 4450,
+  "embedding_metadata": {
+    "model_name": "zhihan1996/DNA_bert_6",
+    "pooling": "mean",
+    "kmer_size": 6,
+    "model_kmer_size": 6,
+    "embedding_path": "bert/table_1_embeddings.npz"
+  },
+  "training_config": {
+    "batch_size": 128,
+    "epochs_requested": 250,
+    "epochs_trained": 143,
+    "best_epoch": 113,
+    "learning_rate": 0.0005,
+    "weight_decay": 0.0003,
+    "patience": 30,
+    "seed": 7,
+    "device": "cpu"
+  },
+  "domain_adaptation": {
+    "enabled": true,
+    "target_table_path": "data/extracted/clean/table_3.csv",
+    "target_embedding_path": "bert/table_3_embeddings.npz",
+    "target_row_count": 1000,
+    "source_train_row_count": 3114,
+    "target_embedding_metadata": {
+      "model_name": "zhihan1996/DNA_bert_6",
+      "pooling": "mean",
+      "kmer_size": 6,
+      "model_kmer_size": 6,
+      "embedding_path": "bert/table_3_embeddings.npz"
+    },
+    "weight_summary": {
+      "domain_auc": 0.9278969171483661,
+      "mean_raw_weight": 0.625809159670998,
+      "median_raw_weight": 0.3071443091568432,
+      "mean_weight": 1.0,
+      "median_weight": 0.7169532638259966,
+      "min_weight": 0.7169532638259966,
+      "max_weight": 3.584766319129983,
+      "weight_p10": 0.7169532638259966,
+      "weight_p90": 1.7081578185871547,
+      "clip_min": 0.5,
+      "clip_max": 2.5,
+      "classifier_c": 0.5
+    }
+  },
+  "metrics": {
+    "train": {
+      "raw": {
+        "mae": 116054.0703125,
+        "rmse": 224319.90625,
+        "r2": 0.9598063152352895
+      },
+      "model_scale": {
+        "mae": 0.05383605509996414,
+        "rmse": 0.07103408128023148,
+        "r2": 0.9886104143839584
+      }
+    },
+    "val": {
+      "raw": {
+        "mae": 375949.03125,
+        "rmse": 579087.875,
+        "r2": 0.7102903420863494
+      },
+      "model_scale": {
+        "mae": 0.22677360475063324,
+        "rmse": 0.3138391077518463,
+        "r2": 0.7664615258628198
+      }
+    },
+    "test": {
+      "raw": {
+        "mae": 369912.53125,
+        "rmse": 576602.8125,
+        "r2": 0.6926206763892742
+      },
+      "model_scale": {
+        "mae": 0.23834052681922913,
+        "rmse": 0.3386857807636261,
+        "r2": 0.7329897134702177
+      }
+    }
+  }
+}

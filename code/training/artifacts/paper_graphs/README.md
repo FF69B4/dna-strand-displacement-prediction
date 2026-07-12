@@ -1,0 +1,21 @@
+Clean paper figures generated from saved training artifacts.
+
+- `model_test_r2_comparison.png`: measured test R2 across key model variants.
+- `external_ranking_metrics.png`: broad ranking/prioritisation metrics against Akay/reference rankings.
+- `feature_concatenation_dimensions.png`: final 1278-dimensional feature vector composition.
+- `akay_model_rank_agreement.png`: candidate rank agreement between the final model and Akay/reference ranking.
+- `top10_predicted_table3_candidates.png`: highest predicted table 3 candidate k1 values.
+- `top20_availability_heatmap.png`: nucleotide availability patterns in the top predicted candidates.
+- `predicted_vs_actual_log10_test.png`: measured test-set fit for the selected final model.
+- `residuals_vs_predicted_log10_test.png`: residual pattern for exact kinetic prediction uncertainty.
+- `embeddings_only_predicted_vs_actual_log10_test.png`: measured test-set fit for the embeddings-only reproduction.
+- `embeddings_only_residuals_log10_test.png`: residual pattern for the embeddings-only reproduction.
+- `embeddings_only_split_r2.png`: train, validation, and test R2 values for the embeddings-only reproduction.
+- `embeddings_only_ablation_context.png`: embeddings-only result placed beside later feature additions.
+- `embeddings_only_fold_error_distribution_test.png`: held-out fold-error distribution for the embeddings-only reproduction.
+- `topk_overlap_curve_final_model.png`: top-k candidate overlap against Akay/reference rankings.
+- `table3_predicted_k1_distribution.png`: distribution of predicted table 3 k1 values.
+- `mean_availability_vs_predicted_k1.png`: relationship between mean availability and predicted k1.
+- `table3_embedding_pca_3d_by_rank.png`: PCA projection of real table 3 DNA-BERT embeddings grouped by predicted rank band.
+- `table3_embedding_pca_3d_by_gc_context.png`: PCA projection of real table 3 DNA-BERT embeddings grouped by sequence GC context.
+- `table1_table3_embedding_pca_3d.png`: PCA projection comparing real measured table 1 and candidate table 3 DNA-BERT embeddings.

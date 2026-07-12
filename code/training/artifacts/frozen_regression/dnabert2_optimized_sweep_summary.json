@@ -1,0 +1,65 @@
+{
+  "selection_metric": "validation raw R2",
+  "best": {
+    "name": "silu_compact",
+    "artifact_path": "training/artifacts/frozen_regression/k1_regression_head_dnabert2_optimized_silu_compact.pt",
+    "val_r2": 0.6965510854717256,
+    "val_rmse": 592660.1875,
+    "test_r2": 0.6870566000793943,
+    "test_rmse": 581798.125,
+    "epochs_trained": 250,
+    "best_epoch": 250
+  },
+  "candidates": [
+    {
+      "name": "silu_compact",
+      "artifact_path": "training/artifacts/frozen_regression/k1_regression_head_dnabert2_optimized_silu_compact.pt",
+      "val_r2": 0.6965510854717256,
+      "val_rmse": 592660.1875,
+      "test_r2": 0.6870566000793943,
+      "test_rmse": 581798.125,
+      "epochs_trained": 250,
+      "best_epoch": 250
+    },
+    {
+      "name": "compact_regularized",
+      "artifact_path": "training/artifacts/frozen_regression/k1_regression_head_dnabert2_optimized_compact_regularized.pt",
+      "val_r2": 0.6574150330107378,
+      "val_rmse": 629719.4375,
+      "test_r2": 0.6338364887008079,
+      "test_rmse": 629327.875,
+      "epochs_trained": 171,
+      "best_epoch": 136
+    },
+    {
+      "name": "baseline_shape_more_regularized",
+      "artifact_path": "training/artifacts/frozen_regression/k1_regression_head_dnabert2_optimized_baseline_shape_more_regularized.pt",
+      "val_r2": 0.6456530618284883,
+      "val_rmse": 640438.3125,
+      "test_r2": 0.6287794935077455,
+      "test_rmse": 633658.6875,
+      "epochs_trained": 170,
+      "best_epoch": 135
+    },
+    {
+      "name": "domain_weighted",
+      "artifact_path": "training/artifacts/frozen_regression/k1_regression_head_dnabert2_optimized_domain_weighted.pt",
+      "val_r2": 0.6380680648961361,
+      "val_rmse": 647256.5,
+      "test_r2": 0.625937953779317,
+      "test_rmse": 636079.25,
+      "epochs_trained": 170,
+      "best_epoch": 135
+    },
+    {
+      "name": "deep_regularized",
+      "artifact_path": "training/artifacts/frozen_regression/k1_regression_head_dnabert2_optimized_deep_regularized.pt",
+      "val_r2": 0.6242034161680708,
+      "val_rmse": 659537.3125,
+      "test_r2": 0.596705091950771,
+      "test_rmse": 660466.5,
+      "epochs_trained": 69,
+      "best_epoch": 34
+    }
+  ]
+}

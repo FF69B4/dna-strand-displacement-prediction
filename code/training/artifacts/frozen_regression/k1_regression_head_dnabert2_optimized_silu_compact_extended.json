@@ -1,0 +1,69 @@
+{
+  "artifact_path": "training/artifacts/frozen_regression/k1_regression_head_dnabert2_optimized_silu_compact_extended.pt",
+  "predictions_path": "training/artifacts/frozen_regression/k1_regression_head_dnabert2_optimized_silu_compact_extended_predictions.csv",
+  "target_column": "k1",
+  "target_transform": "log10",
+  "feature_count": 1278,
+  "row_count": 4450,
+  "embedding_metadata": {
+    "model_name": "zhihan1996/DNABERT-2-117M",
+    "pooling": "mean",
+    "kmer_size": 0,
+    "model_kmer_size": 0,
+    "embedding_path": "bert/table_1_embeddings_dnabert2.npz"
+  },
+  "training_config": {
+    "batch_size": 128,
+    "epochs_requested": 400,
+    "epochs_trained": 310,
+    "best_epoch": 250,
+    "learning_rate": 0.0003,
+    "weight_decay": 0.0005,
+    "patience": 60,
+    "activation": "silu",
+    "normalization": "layer",
+    "seed": 7,
+    "device": "cpu"
+  },
+  "domain_adaptation": {
+    "enabled": false
+  },
+  "metrics": {
+    "train": {
+      "raw": {
+        "mae": 122368.0234375,
+        "rmse": 212006.125,
+        "r2": 0.9640979672183568
+      },
+      "model_scale": {
+        "mae": 0.057218998670578,
+        "rmse": 0.07386303693056107,
+        "r2": 0.9876851626176143
+      }
+    },
+    "val": {
+      "raw": {
+        "mae": 374751.65625,
+        "rmse": 592660.1875,
+        "r2": 0.6965510854717256
+      },
+      "model_scale": {
+        "mae": 0.23053891956806183,
+        "rmse": 0.31651484966278076,
+        "r2": 0.7624623200820476
+      }
+    },
+    "test": {
+      "raw": {
+        "mae": 381525.6875,
+        "rmse": 581798.125,
+        "r2": 0.6870566000793943
+      },
+      "model_scale": {
+        "mae": 0.2417459338903427,
+        "rmse": 0.341288685798645,
+        "r2": 0.7288698110077461
+      }
+    }
+  }
+}

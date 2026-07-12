@@ -1,0 +1,71 @@
+{
+  "experiment": "dnabert2_optimized_silu_compact_embeddings_with_nn_availability",
+  "selection_basis": "best validation R2 among isolated DNABERT-2 optimization sweep candidates",
+  "table_path": "data/extracted/clean/table_3.csv",
+  "embedding_path": "bert/table_3_embeddings_dnabert2.npz",
+  "artifact_path": "training/artifacts/frozen_regression/k1_regression_head_dnabert2_optimized_silu_compact.pt",
+  "predictions_path": "training/artifacts/final_predictions/table_3_dnabert2_optimized_predictions_ranked.csv",
+  "row_count": 1000,
+  "top_10": [
+    {
+      "No.": "838",
+      "Sequence": "ACCCCACCTTTATTTTGATCTCCATAACCA",
+      "predicted_k1": 2815122,
+      "predicted_rank": 1
+    },
+    {
+      "No.": "321",
+      "Sequence": "CGGAGGAAAAAAAAAAAGAATGGGTACGTC",
+      "predicted_k1": 2737181,
+      "predicted_rank": 2
+    },
+    {
+      "No.": "836",
+      "Sequence": "CGACCCCACCTTTATTTTGATCTCCATAAC",
+      "predicted_k1": 2587852,
+      "predicted_rank": 3
+    },
+    {
+      "No.": "840",
+      "Sequence": "CCCACCTTTATTTTGATCTCCATAACCATT",
+      "predicted_k1": 2448361,
+      "predicted_rank": 4
+    },
+    {
+      "No.": "832",
+      "Sequence": "TTCCCGACCCCACCTTTATTTTGATCTCCA",
+      "predicted_k1": 2444195,
+      "predicted_rank": 5
+    },
+    {
+      "No.": "837",
+      "Sequence": "GACCCCACCTTTATTTTGATCTCCATAACC",
+      "predicted_k1": 2419603,
+      "predicted_rank": 6
+    },
+    {
+      "No.": "839",
+      "Sequence": "CCCCACCTTTATTTTGATCTCCATAACCAT",
+      "predicted_k1": 2360181,
+      "predicted_rank": 7
+    },
+    {
+      "No.": "831",
+      "Sequence": "ATTCCCGACCCCACCTTTATTTTGATCTCC",
+      "predicted_k1": 2323651,
+      "predicted_rank": 8
+    },
+    {
+      "No.": "835",
+      "Sequence": "CCGACCCCACCTTTATTTTGATCTCCATAA",
+      "predicted_k1": 2266395,
+      "predicted_rank": 9
+    },
+    {
+      "No.": "834",
+      "Sequence": "CCCGACCCCACCTTTATTTTGATCTCCATA",
+      "predicted_k1": 2230658,
+      "predicted_rank": 10
+    }
+  ]
+}

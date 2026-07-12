@@ -1,0 +1,71 @@
+{
+  "artifact_path": "training/artifacts/finetuned_dnabert/k1_finetuned_dnabert_tuned2.pt",
+  "predictions_path": "training/artifacts/finetuned_dnabert/k1_finetuned_dnabert_tuned2_predictions.csv",
+  "target_column": "k1",
+  "target_transform": "log10",
+  "row_count": 4450,
+  "metrics": {
+    "train": {
+      "raw": {
+        "mae": 483617.25,
+        "rmse": 846676.9375,
+        "r2": 0.4273916846140531
+      },
+      "model_scale": {
+        "mae": 0.24469441175460815,
+        "rmse": 0.3246545195579529,
+        "r2": 0.7620874965524338
+      }
+    },
+    "val": {
+      "raw": {
+        "mae": 675915.3125,
+        "rmse": 971841.25,
+        "r2": 0.1840476756481182
+      },
+      "model_scale": {
+        "mae": 0.44111451506614685,
+        "rmse": 0.5666258335113525,
+        "r2": 0.23873285420206103
+      }
+    },
+    "test": {
+      "raw": {
+        "mae": 667488.3125,
+        "rmse": 959363.5625,
+        "r2": 0.1490823127468648
+      },
+      "model_scale": {
+        "mae": 0.42941543459892273,
+        "rmse": 0.5766587853431702,
+        "r2": 0.2259448549272829
+      }
+    }
+  },
+  "model_name": "zhihan1996/DNA_bert_6",
+  "feature_set": "bert+nn",
+  "tuning_config": {
+    "total_encoder_layers": 12,
+    "train_embeddings": false,
+    "unfreeze_last_n_layers": 1,
+    "trainable_encoder_parameter_count": 7087872
+  },
+  "training_config": {
+    "batch_size": 16,
+    "epochs_requested": 12,
+    "epochs_trained": 12,
+    "best_epoch": 9,
+    "encoder_learning_rate": 1e-05,
+    "head_learning_rate": 0.0007,
+    "weight_decay": 0.0001,
+    "gradient_clip": 1.0,
+    "scheduler": "cosine",
+    "warmup_ratio": 0.1,
+    "warmup_steps": 234,
+    "loss": "mse",
+    "huber_delta": null,
+    "patience": 4,
+    "seed": 7,
+    "device": "cpu"
+  }
+}

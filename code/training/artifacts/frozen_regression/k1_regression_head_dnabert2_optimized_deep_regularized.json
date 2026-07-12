@@ -1,0 +1,69 @@
+{
+  "artifact_path": "training/artifacts/frozen_regression/k1_regression_head_dnabert2_optimized_deep_regularized.pt",
+  "predictions_path": "training/artifacts/frozen_regression/k1_regression_head_dnabert2_optimized_deep_regularized_predictions.csv",
+  "target_column": "k1",
+  "target_transform": "log10",
+  "feature_count": 1278,
+  "row_count": 4450,
+  "embedding_metadata": {
+    "model_name": "zhihan1996/DNABERT-2-117M",
+    "pooling": "mean",
+    "kmer_size": 0,
+    "model_kmer_size": 0,
+    "embedding_path": "bert/table_1_embeddings_dnabert2.npz"
+  },
+  "training_config": {
+    "batch_size": 128,
+    "epochs_requested": 250,
+    "epochs_trained": 69,
+    "best_epoch": 34,
+    "learning_rate": 0.0003,
+    "weight_decay": 0.001,
+    "patience": 35,
+    "activation": "gelu",
+    "normalization": "layer",
+    "seed": 7,
+    "device": "cpu"
+  },
+  "domain_adaptation": {
+    "enabled": false
+  },
+  "metrics": {
+    "train": {
+      "raw": {
+        "mae": 279459.28125,
+        "rmse": 570064.8125,
+        "r2": 0.7404203200081305
+      },
+      "model_scale": {
+        "mae": 0.12114717811346054,
+        "rmse": 0.15486876666545868,
+        "r2": 0.945862023602102
+      }
+    },
+    "val": {
+      "raw": {
+        "mae": 418275.6875,
+        "rmse": 659537.3125,
+        "r2": 0.6242034161680708
+      },
+      "model_scale": {
+        "mae": 0.24893222749233246,
+        "rmse": 0.3412947952747345,
+        "r2": 0.7238127007483339
+      }
+    },
+    "test": {
+      "raw": {
+        "mae": 433881.25,
+        "rmse": 660466.5,
+        "r2": 0.596705091950771
+      },
+      "model_scale": {
+        "mae": 0.26487258076667786,
+        "rmse": 0.3647376298904419,
+        "r2": 0.6903327569558763
+      }
+    }
+  }
+}

@@ -1,0 +1,9 @@
+Model,Measured table_1 test R2,Measured table_1 test RMSE,Measured table_1 test MAE,Akay pearson_log10,Akay spearman_log10,Akay rmse_log10,Akay MAPE %,Akay median APE %,Akay within 2x,Akay top-10 overlap,Akay top-50 overlap,Akay top-100 overlap,Note
+Frozen embeddings+NN+availability tuned,0.702,567590.625,369376.906,0.757,0.745,0.331,64.921,42.753,0.645,0.3,0.52,0.53,selected final model
+Frozen embeddings+NN+availability domain-weighted,0.693,576602.812,369912.531,0.756,0.753,0.333,59.282,42.201,0.641,0.3,0.46,0.52,soft target-domain weighting toward table_3
+Frozen embeddings+NN+availability,0.626,635703.0,406633.5,0.748,0.737,0.369,64.739,46.74,0.597,0.3,0.46,0.48,availability added
+Frozen embeddings+NN,0.335,848327.75,588749.062,0.459,0.487,0.464,126.314,54.118,0.543,0.1,0.38,0.44,best pre-availability frozen baseline
+Fine-tuned bert+NN+availability retry,0.495,738817.0,509965.656,0.594,0.631,0.416,95.172,50.972,0.567,0.4,0.4,0.45,clean retry with gentler 1-layer fine-tune
+Fine-tuned bert+NN+availability,0.498,737127.875,504695.625,0.589,0.617,0.457,83.097,52.763,0.537,0.3,0.38,0.44,first availability-aware fine-tune
+Fine-tuned bert+NN+availability staged,0.467,759582.875,521637.906,0.605,0.639,0.426,86.107,52.083,0.556,0.4,0.38,0.45,2-epoch head warmup then 1-layer unfreeze
+Fine-tuned bert+NN best,0.275,885519.75,637536.875,0.441,0.474,0.484,130.385,59.676,0.496,0.4,0.4,0.43,best fine-tune before availability

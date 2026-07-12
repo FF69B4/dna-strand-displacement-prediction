@@ -1,0 +1,81 @@
+{
+  "comparison_csv": "training/artifacts/akay_comparisons/table_3_vs_akay_comparison.csv",
+  "row_count": 1000,
+  "same_top_10_count": 3,
+  "same_top_50_count": 26,
+  "same_top_100_count": 53,
+  "largest_positive_rank_jump": [
+    {
+      "No.": 58,
+      "Sequence": "CGGTTCCTCTTACTTGGCAGAGGGAGGCTG",
+      "predicted_rank": 41,
+      "akay_rank": 782,
+      "rank_diff_vs_akay": -741
+    },
+    {
+      "No.": 258,
+      "Sequence": "GGAAAGAAGTGTGCAGAAGGCAAGCCCGGA",
+      "predicted_rank": 48,
+      "akay_rank": 707,
+      "rank_diff_vs_akay": -659
+    },
+    {
+      "No.": 496,
+      "Sequence": "GGCGTCCGTGTGGTCCTCCGTGCAGCCCTC",
+      "predicted_rank": 203,
+      "akay_rank": 832,
+      "rank_diff_vs_akay": -629
+    },
+    {
+      "No.": 57,
+      "Sequence": "CCGGTTCCTCTTACTTGGCAGAGGGAGGCT",
+      "predicted_rank": 238,
+      "akay_rank": 842,
+      "rank_diff_vs_akay": -604
+    },
+    {
+      "No.": 261,
+      "Sequence": "AAGAAGTGTGCAGAAGGCAAGCCCGGAGGT",
+      "predicted_rank": 184,
+      "akay_rank": 773,
+      "rank_diff_vs_akay": -589
+    }
+  ],
+  "largest_negative_rank_jump": [
+    {
+      "No.": 661,
+      "Sequence": "TACTTACGTCATCTTTTTCCTAAATCGAGG",
+      "predicted_rank": 858,
+      "akay_rank": 197,
+      "rank_diff_vs_akay": 661
+    },
+    {
+      "No.": 312,
+      "Sequence": "TCATCTTCCCGGAGGAAAAAAAAAAAGAAT",
+      "predicted_rank": 664,
+      "akay_rank": 48,
+      "rank_diff_vs_akay": 616
+    },
+    {
+      "No.": 528,
+      "Sequence": "GCCCGAGCCGGTTCTTCCTGGTAGGAGGCG",
+      "predicted_rank": 930,
+      "akay_rank": 318,
+      "rank_diff_vs_akay": 612
+    },
+    {
+      "No.": 306,
+      "Sequence": "TATATCTCATCTTCCCGGAGGAAAAAAAAA",
+      "predicted_rank": 780,
+      "akay_rank": 176,
+      "rank_diff_vs_akay": 604
+    },
+    {
+      "No.": 63,
+      "Sequence": "CCTCTTACTTGGCAGAGGGAGGCTGCTATT",
+      "predicted_rank": 959,
+      "akay_rank": 393,
+      "rank_diff_vs_akay": 566
+    }
+  ]
+}

@@ -1,0 +1,37 @@
+{
+  "akay_path": "data/extracted/clean/table_4.csv",
+  "embedding_path": "bert/table_3_embeddings.npz",
+  "availability_path": "data/extracted/clean/table_3.csv",
+  "frozen_artifact": "training/artifacts/frozen_regression/k1_regression_head_with_availability_domain_weighted.pt",
+  "finetune_artifacts": [],
+  "row_count": 1000,
+  "metrics": {
+    "k1_regression_head_with_availability_domain_weighted": {
+      "pearson_raw": 0.7186079130180526,
+      "spearman_raw": 0.7333540715541338,
+      "pearson_log10": 0.7312944009966384,
+      "spearman_log10": 0.7333540715541338,
+      "rmse_log10_vs_akay": 0.34513500332832336,
+      "mae_log10_vs_akay": 0.27377837896347046,
+      "rmse_vs_akay": 832456.25,
+      "mae_vs_akay": 540241.4375,
+      "mean_signed_percent_error_vs_akay": 3.3115994930267334,
+      "mape_vs_akay_percent": 62.29624557495117,
+      "median_ape_vs_akay_percent": 44.822845458984375,
+      "smape_vs_akay_percent": 57.55525207519531,
+      "mean_fold_error_vs_akay": 2.16288161277771,
+      "median_fold_error_vs_akay": 1.6600196361541748,
+      "within_2x_vs_akay": 0.625,
+      "within_3x_vs_akay": 0.837,
+      "within_10x_vs_akay": 0.994,
+      "top_10_overlap": 0.4,
+      "top_50_overlap": 0.4,
+      "top_100_overlap": 0.5
+    }
+  },
+  "outputs": {
+    "csv": "training/artifacts/akay_comparisons/akay_comparison_with_availability_domain_weighted.csv",
+    "json": "training/artifacts/akay_comparisons/akay_comparison_with_availability_domain_weighted.json"
+  },
+  "notes": "Percentage-error fields are computed locally as signed percent error, MAPE, median absolute percentage error, and sMAPE. Log-scale agreement is summarized separately with log10 error, fold error, and within-kx rates relative to Akay's Predicted k1 values because no explicit Akay-specific percent-error formula was found in the local project files."
+}
