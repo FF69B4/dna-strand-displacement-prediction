@@ -24,6 +24,5 @@ For the strongest audit, including retraining the selected model:
 ./.venv/bin/python reproduce_all_reported.py --retrain-selected
 ```
 
-See `code/README.md`, `code/REPRODUCIBILITY.md`, and
-`code/config/reproducibility_manifest.json` for the full result-to-command and
-figure-to-command mapping.
+See `code/README.md` and `code/config/reproducibility_manifest.json` for the
+full result-to-command and figure-to-command mapping.
