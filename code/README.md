@@ -99,6 +99,61 @@ config = ExperimentConfig(
 )
 ```
 
+### Validators and Feature Builders
+
+`DatasetSchema` delegates representation checking and feature construction to
+small pluggable objects. This is what allows the same pipeline to be reused
+outside the DNA experiment.
+
+A validator normalises and validates the representation column before features
+are prepared. It must expose a `name` attribute and a `validate(value)` method
+that returns the normalised representation or raises `ValueError`:
+
+```python
+class ExampleSequenceValidator:
+    name = "example"
+
+    def validate(self, value: object) -> str:
+        sequence = str(value).strip().upper()
+        if not sequence:
+            raise ValueError("Empty sequence")
+        return sequence
+```
+
+A feature builder prepares an inference feature matrix from a table, embedding
+file, schema, and saved `FeatureRecipe`. It must return a
+`PreparedFeatureMatrix` with feature names matching the saved model artifact:
+
+```python
+class ExampleFeatureSetBuilder:
+    def prepare(
+        self,
+        *,
+        recipe: FeatureRecipe,
+        table_path: Path,
+        embedding_path: Path,
+        schema: DatasetSchema,
+    ) -> PreparedFeatureMatrix:
+        # Load rows and embeddings, construct features in recipe.feature_names order,
+        # then return PreparedFeatureMatrix(features=..., ids=..., feature_names=...).
+        ...
+```
+
+The DNA implementation uses:
+
+```python
+schema = DatasetSchema(
+    id_column="No.",
+    sequence_column="Sequence",
+    availability_column="Nucleotide Availability",
+    validator=DnaSequenceValidator(),
+    feature_set_builder=DnaFeatureSetBuilder(),
+)
+```
+
+For non-DNA embedding-only experiments, `NoOpRepresentationValidator` and
+`GenericEmbeddingFeatureSetBuilder` can be used instead.
+
 Graph renderers follow this shape:
 
 ```python
@@ -145,6 +200,14 @@ artifact without rewriting the pipeline itself.
 The framework also uses smaller dataclasses for API routing, saved model
 handling, graph styling, and PDF extraction.
 
+- `DnaSequenceValidator` normalises DNA strings and rejects invalid DNA sequence
+  content during feature preparation.
+- `NoOpRepresentationValidator` passes representation values through as
+  strings for non-DNA or already-normalised embedding-only experiments.
+- `DnaFeatureSetBuilder` constructs DNA-specific feature matrices, including
+  embeddings, nearest-neighbour features, and availability features.
+- `GenericEmbeddingFeatureSetBuilder` constructs embedding-only feature
+  matrices for non-DNA representations.
 - `ApiEndpointConfig` defines the local JSON API name and route paths, such as
   health checks, model metadata, run summaries, prediction listings, prediction
   lookup by record ID, and optional prediction recomputation.
@@ -172,6 +235,245 @@ handling, graph styling, and PDF extraction.
   pattern used to detect which table is currently being parsed.
 - `ExtractedTable` stores one extracted table specification and its cleaned
   rows before CSV writing.
+
+## Dataclass Templates
+
+The templates below show the expected shape of each configuration object.
+Replace the placeholder names with paths, callbacks, validators, or builders
+from the experiment being implemented.
+
+### Dataset Schema
+
+```python
+schema = DatasetSchema(
+    id_column="No.",
+    sequence_column="Sequence",
+    availability_column="Nucleotide Availability",
+    validator=sequence_validator,
+    feature_set_builder=feature_builder,
+)
+```
+
+### API Endpoints
+
+```python
+api_config = ApiEndpointConfig(
+    name="Example API",
+    health_path="/health",
+    runtime_path="/runtime",
+    model_path="/model/final",
+    runs_path="/runs",
+    run_summary_path="/runs/<run_name>",
+    run_predictions_path="/runs/<run_name>/predictions",
+    predictions_path="/predictions",
+    prediction_path="/predictions/<record_id>",
+    recompute_path="/predictions/recompute",
+    recompute_message="Use POST to recompute predictions.",
+    recompute_body_example={
+        "batch_size": 256,
+        "table_path": "optional path",
+        "embedding_path": "optional path",
+        "artifact_path": "optional path",
+    },
+)
+```
+
+### Application Configuration
+
+```python
+app_config = ArtifactAppConfig(
+    project_root=project_root,
+    artifacts_dir=artifacts_dir,
+    final_prediction_manifest=final_prediction_manifest,
+    final_prediction_csv=final_prediction_csv,
+    final_comparison_markdown=final_comparison_markdown,
+    schema=schema,
+    api=api_config,
+    excluded_run_summaries=frozenset({"artifact_to_hide.json"}),
+    prediction_postprocessor=postprocess_predictions,
+)
+```
+
+### Reproducibility Configuration
+
+```python
+reproducibility_config = ReproducibilityConfig(
+    canonical_model_artifact=canonical_model_artifact,
+    canonical_model_summary=canonical_model_summary,
+    prediction_table=prediction_table,
+    prediction_embeddings=prediction_embeddings,
+    canonical_ranked_predictions=canonical_ranked_predictions,
+    external_summary=external_summary,
+    canonical_graphs=canonical_graphs,
+    output_artifact_name="model.pt",
+    training_args_factory=make_training_args,
+    training_runner=train_model,
+    prediction_verifier=verify_predictions,
+    external_verifier=verify_external_metrics,
+    graph_renderer=render_graphs,
+)
+```
+
+### Full Experiment
+
+```python
+experiment_config = ExperimentConfig(
+    name="Example experiment",
+    app=app_config,
+    reproducibility=reproducibility_config,
+)
+```
+
+### Feature Recipe
+
+`FeatureRecipe` is normally loaded from a saved model checkpoint rather than
+written by hand. Its shape is:
+
+```python
+feature_recipe = FeatureRecipe(
+    feature_set="embeddings+nn+availability",
+    nn_feature_mode="both",
+    feature_names=["feature_1", "feature_2"],
+    feature_mean=feature_mean_array,
+    feature_std=feature_std_array,
+)
+```
+
+### Model Artifact
+
+`ModelArtifact` is also normally loaded from disk:
+
+```python
+artifact = ModelArtifact.load("training/artifacts/model.pt")
+```
+
+Its dataclass shape is:
+
+```python
+artifact = ModelArtifact(
+    path=artifact_path,
+    checkpoint=checkpoint_dict,
+    feature_recipe=feature_recipe,
+    target_column="k1",
+    target_transform="log10",
+)
+```
+
+### Prediction Result
+
+```python
+prediction_result = ArtifactPredictionResult(
+    table_path=table_path,
+    embedding_path=embedding_path,
+    artifact_path=artifact_path,
+    schema=schema,
+    feature_recipe=feature_recipe,
+    target_column="k1",
+    frame=prediction_dataframe,
+)
+```
+
+### Figure Theme and Output
+
+```python
+theme = FigureTheme(
+    rc_params={"font.family": "serif"},
+    bar_hatches=["", "///", "..."],
+    line_styles=["-", "--", ":"],
+    markers=["o", "s", "^"],
+    dpi=220,
+)
+
+figures = FigureOutput(
+    output_dir=output_dir,
+    theme=theme,
+)
+```
+
+Most experiments can use the provided default instead:
+
+```python
+theme = monochrome_serif_theme()
+figures = FigureOutput(output_dir, theme)
+```
+
+### PDF Extraction
+
+```python
+columns = [
+    ColumnSpec(name="No."),
+    ColumnSpec(name="Sequence", transform=remove_whitespace),
+    ColumnSpec(name="k1"),
+]
+
+table_spec = TableSpec(
+    table_id=1,
+    columns=columns,
+    output_name="table_1.csv",
+    skip_joined_header_fragments=("No. Sequence",),
+)
+
+plan = ExtractionPlan(
+    tables={1: table_spec},
+)
+
+extracted = ExtractedTable(
+    spec=table_spec,
+    rows=[],
+)
+```
+
+## Execution Engine
+
+The dataclasses describe the experiment, while the engine classes perform the
+training, prediction, and verification work.
+
+- `PreparedFeatureMatrix` is the shared feature container produced by feature
+  builders. It stores aligned record IDs, normalised representations, the
+  numeric feature matrix, ordered feature names, and embedding metadata.
+- `RegressionHead` is the configurable PyTorch feed-forward model. It is built
+  from an input dimension, hidden dimensions, activation, normalisation mode,
+  and dropout value, then ends in a single regression output.
+- `PredictionService` loads a `ModelArtifact`, prepares features using the
+  artifact's `FeatureRecipe`, applies the saved scaling statistics, runs the
+  regression head on CPU, inverts the target transform, and returns ranked
+  predictions.
+- `ReproducibilityRunner` executes the configured training runner, compares
+  regenerated metrics and tensors with the canonical model artifact, runs the
+  prediction and external verifiers, optionally renders graphs, and returns a
+  combined pass/fail report.
+
+End-to-end flow:
+
+```text
+ExperimentConfig
+→ ReproducibilityConfig
+→ training_args_factory
+→ training_runner
+→ ModelArtifact
+→ FeatureRecipe
+→ feature_set_builder
+→ PreparedFeatureMatrix
+→ RegressionHead
+→ PredictionService
+→ prediction_verifier / external_verifier / graph_renderer
+→ ReproducibilityRunner report
+```
+
+Minimal prediction flow:
+
+```python
+artifact = ModelArtifact.load("training/artifacts/model.pt")
+service = PredictionService(artifact, schema=schema)
+
+result = service.predict_table(
+    table_path="data/example.csv",
+    embedding_path="bert/example_embeddings.npz",
+    batch_size=256,
+)
+
+ranked_predictions = result.frame
+```
 
 ## 1. Quick Prediction Check
 
