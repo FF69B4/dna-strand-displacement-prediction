@@ -1,7 +1,6 @@
 # Documentation
 
-This folder is a self-contained copy of the code and compact artifacts needed
-to inspect and reproduce the study.
+This folder is a self-contained copy of the code and compact artifacts needed to inspect and reproduce the study.
 
 ## Included
 
@@ -10,18 +9,16 @@ to inspect and reproduce the study.
 - Dissertation-specific application and experiment code in `dissertation`
 - Cleaned input tables in `data/extracted/clean`
 - Frozen DNA-BERT and DNABERT-2 embeddings in `bert`
-- Compact regression artifacts, predictions, comparisons, and graph artifacts in
-  `training/artifacts`
+- Compact regression artifacts, predictions, comparisons, and graph artifacts in `training/artifacts`
 - Human-readable selected experiment settings in `config/selected_experiment.json`
 
-Large exploratory fine-tuned checkpoints are intentionally excluded because
-they are not needed to reproduce the selected frozen-embedding regression run.
+Large exploratory fine-tuned checkpoints are intentionally excluded because they are not needed to reproduce the selected frozen-embedding regression run.
 
 ## Recommended Environment
 
 - Python 3.11
 - CPU execution is supported and is the default
-- Approximately 8--10 GB of free space is recommended for the Python
+- Approximately 8-10 GB of free space is recommended for the Python
   environment.
 
 ## Setup
@@ -50,10 +47,7 @@ The main configuration objects are:
 - `ExperimentConfig`: combines the application and reproducibility settings
   under a named experiment.
 
-The graph renderer is a callback that receives an output directory, writes graph
-artifacts into that directory, and returns a small verification dictionary.
-This keeps plotting code replaceable while allowing the reproducibility runner
-to treat graph generation like any other checked artifact.
+The graph renderer is a callback that receives an output directory, writes graph artifacts into that directory, and returns a small verification dictionary. This keeps plotting code replaceable while allowing the reproducibility runner to treat graph generation like any other checked artifact.
 
 Minimal shape:
 
@@ -100,13 +94,9 @@ config = ExperimentConfig(
 
 ### Validators and Feature Builders
 
-`DatasetSchema` delegates representation checking and feature construction to
-small pluggable objects. This is what allows the same pipeline to be reused
-outside the DNA experiment.
+`DatasetSchema` delegates representation checking and feature construction to small pluggable objects. This is what allows the same pipeline to be reused outside the DNA experiment.
 
-A validator normalises and validates the representation column before features
-are prepared. It must expose a `name` attribute and a `validate(value)` method
-that returns the normalised representation or raises `ValueError`:
+A validator normalises and validates the representation column before features are prepared. It must expose a `name` attribute and a `validate(value)` method that returns the normalised representation or raises `ValueError`:
 
 ```python
 class ExampleSequenceValidator:
@@ -119,11 +109,14 @@ class ExampleSequenceValidator:
         return sequence
 ```
 
-A feature builder prepares an inference feature matrix from a table, embedding
-file, schema, and saved `FeatureRecipe`. It must return a
+A feature builder prepares an inference feature matrix from a table, embedding file, schema, and saved `FeatureRecipe`. It must return a
 `PreparedFeatureMatrix` with feature names matching the saved model artifact:
 
 ```python
+from pathlib import Path
+
+from ml_core import DatasetSchema, FeatureRecipe, PreparedFeatureMatrix
+
 class ExampleFeatureSetBuilder:
     def prepare(
         self,
@@ -156,6 +149,8 @@ For non-DNA embedding-only experiments, `NoOpRepresentationValidator` and
 Graph renderers follow this shape:
 
 ```python
+from pathlib import Path
+
 def render_graphs(output_dir: Path) -> dict[str, object]:
     output_dir.mkdir(parents=True, exist_ok=True)
     # write plots into output_dir
@@ -168,11 +163,14 @@ shared theme, and saves the image through `FigureOutput` or the local `save`
 helper:
 
 ```python
+from pathlib import Path
+
 import matplotlib.pyplot as plt
 import pandas as pd
 
 from viz_core import FigureOutput, monochrome_serif_theme
 
+output_dir = Path("outputs/figures")
 theme = monochrome_serif_theme()
 figures = FigureOutput(output_dir, theme)
 
@@ -399,6 +397,14 @@ figures = FigureOutput(output_dir, theme)
 ### PDF Extraction
 
 ```python
+from extract_core import (
+    ColumnSpec,
+    ExtractedTable,
+    ExtractionPlan,
+    TableSpec,
+    remove_whitespace,
+)
+
 columns = [
     ColumnSpec(name="No."),
     ColumnSpec(name="Sequence", transform=remove_whitespace),
@@ -531,7 +537,7 @@ tensors, rankings, external comparison metrics, and graph outputs.
 
 ## Reproducibility Details
 
-`verify_reported_results.py` reconstructs Table 1 test R2, RMSE, and MAE for:
+`verify_reported_results.py` reconstructs Table 1 test R², RMSE, and MAE for:
 
 - embeddings only
 - embeddings + nearest-neighbour features
@@ -542,10 +548,10 @@ tensors, rankings, external comparison metrics, and graph outputs.
 
 The recomputed values are compared with
 `training/artifacts/model_comparison/reported_table1_model_comparison.csv`.
-The script also checks the two R2 values stated explicitly in the report:
+The script also checks the two R² values stated explicitly in the report:
 
-- selected 6-mer hybrid model test R2: `0.702`
-- optimised DNABERT-2 test R2: `0.687`
+- selected 6-mer hybrid model test R²: `0.702`
+- optimised DNABERT-2 test R²: `0.687`
 
 Computational graphs are regenerated by `dissertation/graphs.py` from packaged
 CSV, JSON, prediction, and embedding artifacts. The context-dependent 6-mer PCA
@@ -587,9 +593,9 @@ The selected model uses:
 - Frozen `zhihan1996/DNA_bert_6` mean-pooled embeddings
 - Positional and frequency nearest-neighbour dinucleotide features
 - Per-position nucleotide availability features
-- A `768 -> 256 -> 1` regression head
-- Layer normalization, GELU activation, and dropout
-- AdamW optimization and early stopping
+- A `1278 -> 768 -> 256 -> 1` regression head
+- Layer normalisation, GELU activation, and dropout
+- AdamW optimisation and early stopping
 - `log10(k1)` as the model target
 
 The exact configuration is available in both
