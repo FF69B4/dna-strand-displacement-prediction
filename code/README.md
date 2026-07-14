@@ -1,4 +1,4 @@
-# Dissertation Code
+# Documentation
 
 This folder is a self-contained copy of the code and compact artifacts needed
 to inspect and reproduce the study.
@@ -22,7 +22,7 @@ they are not needed to reproduce the selected frozen-embedding regression run.
 - Python 3.11
 - CPU execution is supported and is the default
 - Approximately 8--10 GB of free space is recommended for the Python
-  environment, mainly due to the pinned PyTorch dependency stack
+  environment.
 
 ## Setup
 
@@ -35,8 +35,7 @@ python3 -m venv .venv
 
 ## Implementing a New Experiment
 
-The reusable pipeline is configured with dataclasses rather than hard-coded
-paths. A new experiment is defined by creating an `ExperimentConfig` that
+A new experiment is defined by creating an `ExperimentConfig` that
 combines an application configuration with a reproducibility configuration.
 
 The main configuration objects are:
